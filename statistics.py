@@ -48,9 +48,9 @@ class statistics():
         self.result={}
         for i in range(33,126):
             x=chr(i)
-            x = self.chars.count(chr(i))
+            x = self.chars.count(chr(i))    #字符计数
             if x != 0:
-                self.result[chr(i)]=str(x)  #添加进字典
+                self.result[chr(i)]=x  #添加进字典
         #print(self.result)
 
 
@@ -59,11 +59,17 @@ class statistics():
         根据字典values进行排序
         :return:
         '''
-        sort = sorted(self.result.items(),key=lambda item:item[1])
-        str="字符数由小到大"
-        str=str.decode("utf-8")
-        print(str)
-        print(sort)
+        sort = sorted(self.result.items(), key=lambda s:s[1])  #按照values排序
+        print("--------- sort by number: ----------")
+        for x,y in sort:
+            print("char: "+x+"  "+"number:"+str(y))
+
+        sort = sorted(self.result.items(), key=lambda s: s[0])  # 按照key排序
+        print("--------- sort by chars: ----------")
+        for x, y in sort:
+            print("char: " + x + "  " + "number:" + str(y))
+
+
 
 
 
