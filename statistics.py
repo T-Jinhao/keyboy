@@ -14,6 +14,7 @@ class statistics():
 
     def __init__(self,name):  #赋予文件名
         self.name=name
+        self.OpenFile()
 
     def OpenFile(self):
         '''
@@ -27,6 +28,7 @@ class statistics():
             except:
                 print("Can't open "+self.name)
                 exit()
+        self.CharDeal()
 
 
     def CharDeal(self):
@@ -38,6 +40,7 @@ class statistics():
         chars = chars.replace(" ","")
         self.chars = chars.replace("\n","")
         #print(self.chars)
+        self.CharsCount()
 
 
     def CharsCount(self):
@@ -52,6 +55,7 @@ class statistics():
             if x != 0:
                 self.result[chr(i)]=x  #添加进字典
         #print(self.result)
+        self.CharsSort()
 
 
     def CharsSort(self):
@@ -77,11 +81,8 @@ class statistics():
 def main():
     filename = sys.argv            #获取控制台文件名
     #print(filename[1])
-    file=statistics(filename[1])   #获取文件名
-    file.OpenFile()                #打开文件
-    file.CharDeal()                #去掉空格换行符
-    file.CharsCount()              #字符计数
-    file.CharsSort()               #按照字符数排序
+    statistics(filename[1])        #启动
+
 
 
 
